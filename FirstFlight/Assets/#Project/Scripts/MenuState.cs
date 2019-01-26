@@ -26,17 +26,20 @@ public class MenuState : GameState
         XRDevice.SetTrackingSpaceType(TrackingSpaceType.Stationary);
     }
 
-    void OnEnable()
+    protected void OnEnable()
     {
         _playerMovement.enabled = false;
         _titleScreen.SetActive(true);
         _subTitle.SetActive(false);
         _playerRigidBody.isKinematic = true;
         _playerMovement.applyDrift = false;
+        _playerMovement.applyLift = false;
 
         _playerPositionReset.ResetPos();
 
         Invoke("MinWaitOver", _minWait);
+
+        base.OnEnable();
     }
 
     void Update()

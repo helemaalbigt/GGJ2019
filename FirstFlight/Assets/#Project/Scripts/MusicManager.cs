@@ -1,59 +1,56 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class MusicManager : MonoBehaviour
 {
-    public AudioSource[] _loops;
+    public AudioMixerSnapshot menu;
+    public AudioMixerSnapshot silence;
+    public AudioMixerSnapshot flying;
+    public ToggleDrift toggleDrift;
 
-    [Space(25)]
-    public bool _flapTempoEnabled;
-    public FlapData _left;
-    public FlapData _right;
-    public SpeedMapValues _speedMapValues;
-
-    private float _pitch;
+    [Space(25)] public GameState startMenuState;
+    public GameState deathMenuState;
+    public GameState flyState;
+    public AudioSource flyIntro;
+    public AudioSource flyLoop;
 
     void Start()
     {
-        _loops = GetComponents<AudioSource>();
+        startMenuState.onStateEnabled += FadeToMenuMusic;
+        deathMenuState.onStateEnabled += FadeToMenuMusic;
+        flyState.onStateEnabled += FadeToSilence;
+        toggleDrift.onPlayerEntered += StartFlyMusic;
     }
 
-    void Update()
+    private void FadeToMenuMusic()
     {
-        if (_flapTempoEnabled)
-        {
-            _pitch = MapFlapSpeedToTempo();
-            foreach (var loop in _loops)
-            {
-                loop.pitch = _pitch;
-            }
-        }
+        menu.TransitionTo(0.2f);
     }
 
-    private float MaxFlapSpeed()
+    private void FadeToSilence()
     {
-        return Mathf.Max(_left.averageFlapSpeed, _right.averageFlapSpeed);
+        silence.TransitionTo(1f);
     }
 
-    private float MapFlapSpeedToTempo()
+    private void StartFlyMusic()
     {
-        return MapValue(MaxFlapSpeed(), _speedMapValues.minSpeed, _speedMapValues.crazySpeed, _speedMapValues.minPitch, _speedMapValues.maxPitch);
+        flying.TransitionTo(0.01f);
+
+        StartCoroutine(PlayLoopSequence());
     }
 
-    private float MapValue(float value, float minA, float maxA, float minB, float maxB)
+    IEnumerator PlayLoopSequence()
     {
-        float normal = Mathf.InverseLerp(minA, maxA, value);
-        return Mathf.Lerp(minB, maxB, normal);
+        flyLoop.Stop();
+        flyIntro.Stop();
 
+        flyIntro.Play();
+
+        while(flyIntro.isPlaying)
+            yield return null;
+
+        flyLoop.Play();
     }
-}
-
-[System.Serializable]
-public class SpeedMapValues
-{
-    public float minPitch;
-    public float maxPitch;
-    public float minSpeed;
-    public float crazySpeed;
 }

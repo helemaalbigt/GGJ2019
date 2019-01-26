@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float maxSpeed = 20f;
     public float forwardMultiplier;
+    public bool applyLift =  true;
     public float liftMultiplier;
     public bool applyDrift = true;
     public float driftMultiplier;
@@ -19,9 +20,10 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        ApplyLift();
         ApplyForwardForce();
-        if(applyDrift)
+        if (applyLift)
+            ApplyLift();
+        if (applyDrift)
             ApplyDrift();
 
         ConstrainSpeed();

@@ -9,9 +9,11 @@ public class FlyState : GameState
 
     private bool _touchedGround;
 
-    void OnEnable()
+    protected void OnEnable()
     {
         _groundDetector.onTouchedGround += TouchedGround;
+
+        base.OnEnable();
     }
 
     void OnDisable()
