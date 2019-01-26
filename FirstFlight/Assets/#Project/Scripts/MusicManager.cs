@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    public AudioSource _mainLoop;
-    public AudioSource _shittyLoop;
+    public AudioSource[] _loops;
 
     [Space(25)]
     public bool _flapTempoEnabled;
@@ -15,13 +14,20 @@ public class MusicManager : MonoBehaviour
 
     private float _pitch;
 
+    void Start()
+    {
+        _loops = GetComponents<AudioSource>();
+    }
+
     void Update()
     {
         if (_flapTempoEnabled)
         {
-            _pitch = MapFlapSpeedToTempo();;
-            _mainLoop.pitch = _pitch;
-            _shittyLoop.pitch = _pitch;
+            _pitch = MapFlapSpeedToTempo();
+            foreach (var loop in _loops)
+            {
+                loop.pitch = _pitch;
+            }
         }
     }
 
