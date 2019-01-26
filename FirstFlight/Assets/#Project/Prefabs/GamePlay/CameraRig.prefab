@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   downForce: 0
   averageFlapSpeed: 0
-  hand: 0
+  hand: 5
   _speedSampleSize: 50
 --- !u!1 &7331092591292509240
 GameObject:
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7331092591292509240}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd1dbd87bf24bf049b7d5e0c3f4fef1f, type: 3}
   m_Name: 
@@ -483,7 +483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   downForce: 0
   averageFlapSpeed: 0
-  hand: 0
+  hand: 4
   _speedSampleSize: 50
 --- !u!1 &7331092592216573590
 GameObject:

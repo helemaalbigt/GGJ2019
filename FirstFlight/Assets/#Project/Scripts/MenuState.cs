@@ -22,6 +22,8 @@ public class MenuState : GameState
     {
         _left.onFlap += SetLeftFlapped;
         _right.onFlap += SetRightFlapped;
+
+        XRDevice.SetTrackingSpaceType(TrackingSpaceType.Stationary);
     }
 
     void OnEnable()
@@ -30,6 +32,7 @@ public class MenuState : GameState
         _titleScreen.SetActive(true);
         _subTitle.SetActive(false);
         _playerRigidBody.isKinematic = true;
+        _playerMovement.applyDrift = false;
 
         _playerPositionReset.ResetPos();
 
@@ -38,7 +41,7 @@ public class MenuState : GameState
 
     void Update()
     {
-        if (XRDevice.userPresence == UserPresenceState.Present && !_headSetPositioned)
+        if (XRDevice.userPresence == UserPresenceState.Present && !_headSetPositioned && !_playerPositionReset.ResetSuccessfull())
         {
             _playerPositionReset.ResetPos();
             _headSetPositioned = true;

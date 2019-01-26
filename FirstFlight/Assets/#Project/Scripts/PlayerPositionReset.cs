@@ -18,6 +18,12 @@ public class PlayerPositionReset : MonoBehaviour
             ResetPos();
     }
 
+    public bool ResetSuccessfull()
+    {
+        return Mathf.Abs(_head.position.x - _target.position.x) < .2f &&
+               Mathf.Abs(_head.position.z - _target.position.z) < .2f;
+    }
+
     public void ResetPos()
     {
         _playArea.position = _target.position;
