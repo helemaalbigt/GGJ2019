@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public bool applyDrift = true;
     public float driftMultiplier;
     public float minSpeedForDrift = .5f;
+    public float minHandDist = .8f;
+    public float maxHandDist = 1.2f;
 
     [Space(15)]
     public Rigidbody _rigidBody;
@@ -31,12 +33,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void ApplyLift()
     {
-        _rigidBody.AddRelativeForce(Vector3.up.normalized * AverageFlapForce() * liftMultiplier, ForceMode.Acceleration);
+        _rigidBody.AddRelativeForce(Vector3.up.normalized * AverageFlapForce() * liftMultiplier * HandDistanceModifier(), ForceMode.Acceleration);
     }
 
     private void ApplyForwardForce()
     {
-        _rigidBody.AddRelativeForce(Vector3.forward.normalized * AverageFlapForce() * forwardMultiplier, ForceMode.Acceleration);
+        _rigidBody.AddRelativeForce(Vector3.forward.normalized * AverageFlapForce() * forwardMultiplier * HandDistanceModifier(), ForceMode.Acceleration);
     }
 
     private float AverageFlapForce()
@@ -52,10 +54,24 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private float HandDistanceModifier()
+    {
+        var dist = Vector3.Distance(_leftFlap.transform.position, _rightFlap.transform.position);
+        return MapValue(dist, minHandDist, maxHandDist, 0, 1f);
+
+    }
+
     private void ApplyDrift()
     {
         if (_rigidBody.velocity.magnitude < minSpeedForDrift)
             return;
         _rigidBody.AddRelativeForce(Vector3.right.normalized * _wingAngle.angle * driftMultiplier);
+    }
+
+    private float MapValue(float value, float minA, float maxA, float minB, float maxB)
+    {
+        float normal = Mathf.InverseLerp(minA, maxA, value);
+        return Mathf.Lerp(minB, maxB, normal);
+
     }
 }

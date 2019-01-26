@@ -158,7 +158,7 @@ MonoBehaviour:
   downForce: 0
   averageFlapSpeed: 0
   hand: 5
-  _speedSampleSize: 50
+  _speedSampleSize: 100
 --- !u!1 &7331092591292509240
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,6 +175,8 @@ GameObject:
   - component: {fileID: 569400274}
   - component: {fileID: 569400273}
   - component: {fileID: 569400276}
+  - component: {fileID: 1454736372241714749}
+  - component: {fileID: 8909940264418235947}
   m_Layer: 9
   m_Name: CameraRig
   m_TagString: Untagged
@@ -235,17 +237,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7331092591292509240}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cd1dbd87bf24bf049b7d5e0c3f4fef1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 20
   forwardMultiplier: 120
-  liftMultiplier: 100
-  applyDrift: 0
+  applyLift: 1
+  liftMultiplier: 60
+  applyDrift: 1
   driftMultiplier: 0.07
   minSpeedForDrift: 0.5
+  minHandDist: 0.6
+  maxHandDist: 1.2
   _rigidBody: {fileID: 7331092591292509222}
   _leftFlap: {fileID: 7331092591585936870}
   _rightFlap: {fileID: 7331092591251640412}
@@ -392,6 +397,46 @@ MonoBehaviour:
   _source: {fileID: 569400274}
   _leftFlap: {fileID: 7331092591585936870}
   _rightFlap: {fileID: 7331092591251640412}
+--- !u!114 &1454736372241714749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7331092591292509240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6950dbca1ab5564f96babcff11c2a36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ground:
+    serializedVersion: 2
+    m_Bits: 4096
+--- !u!114 &8909940264418235947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7331092591292509240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd1dbd87bf24bf049b7d5e0c3f4fef1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 20
+  forwardMultiplier: 120
+  applyLift: 1
+  liftMultiplier: 60
+  applyDrift: 1
+  driftMultiplier: 0.07
+  minSpeedForDrift: 0.5
+  minHandDist: 0.6
+  maxHandDist: 1.2
+  _rigidBody: {fileID: 7331092591292509222}
+  _leftFlap: {fileID: 7331092591585936870}
+  _rightFlap: {fileID: 7331092591251640412}
+  _wingAngle: {fileID: 7331092591292509220}
 --- !u!1 &7331092591552291069
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,7 +529,7 @@ MonoBehaviour:
   downForce: 0
   averageFlapSpeed: 0
   hand: 4
-  _speedSampleSize: 50
+  _speedSampleSize: 100
 --- !u!1 &7331092592216573590
 GameObject:
   m_ObjectHideFlags: 0
