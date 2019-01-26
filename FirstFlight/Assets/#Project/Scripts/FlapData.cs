@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class FlapData : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class FlapData : MonoBehaviour
 
     public float downForce;
     public float averageFlapSpeed;
+    public XRNode hand;
 
     public int _speedSampleSize;
 
@@ -31,6 +33,9 @@ public class FlapData : MonoBehaviour
 
     void Update()
     {
+        if (InputDevices.GetDeviceAtXRNode(hand) == null)
+            return;
+
         CalcDownForce();
         CalcFlapSpeed();
         UpdateDownFlapDistance();

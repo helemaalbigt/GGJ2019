@@ -18,7 +18,7 @@ public class PlayerPositionReset : MonoBehaviour
             ResetPos();
     }
 
-    private void ResetPos()
+    public void ResetPos()
     {
         _playArea.position = _target.position;
         _playArea.Translate(_playArea.position - _head.position);
