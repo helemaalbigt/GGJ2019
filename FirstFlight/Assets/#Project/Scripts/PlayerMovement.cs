@@ -13,8 +13,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Space(15)]
     public Rigidbody _rigidBody;
-    public FlapForce _leftFlap;
-    public FlapForce _rightFlap;
+    public FlapData _leftFlap;
+    public FlapData _rightFlap;
     public WingAngle _wingAngle;
 
     void FixedUpdate()
@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float AverageFlapForce()
     {
-        return (_leftFlap.force + _rightFlap.force) / 2f;
+        return (_leftFlap.downForce + _rightFlap.downForce) / 2f;
     }
 
     private void ConstrainSpeed()
