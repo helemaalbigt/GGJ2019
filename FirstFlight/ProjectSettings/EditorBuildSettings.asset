@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/#Project/_Scenes/FlapDev.unity
+    guid: dc1bba8ade61fab48bb236fc904fd35d
   m_configObjects: {}
