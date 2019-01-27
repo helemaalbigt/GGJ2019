@@ -33,8 +33,12 @@ public class FlapData : MonoBehaviour
 
     void Update()
     {
-        if (InputDevices.GetDeviceAtXRNode(hand) == null)
+        if (HandNotTracking())
+        {
+            downForce = 0;
+            averageFlapSpeed = 0;
             return;
+        }
 
         CalcDownForce();
         CalcFlapSpeed();
@@ -84,5 +88,10 @@ public class FlapData : MonoBehaviour
     {
         if (onFlap != null)
             onFlap();
+    }
+
+    private bool HandNotTracking()
+    {
+        return InputTracking.GetLocalPosition(hand) == Vector3.zero;
     }
 }

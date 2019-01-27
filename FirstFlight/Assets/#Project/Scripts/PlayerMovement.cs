@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         ApplyForwardForce();
+
         if (applyLift)
             ApplyLift();
         if (applyDrift)
@@ -63,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ApplyDrift()
     {
-        if (_rigidBody.velocity.magnitude < minSpeedForDrift)
+        if (_rigidBody.velocity.magnitude < minSpeedForDrift || HandNotTracking(XRNode.LeftHand) || HandNotTracking(XRNode.RightHand))
             return;
         _rigidBody.AddRelativeForce(Vector3.right.normalized * _wingAngle.angle * driftMultiplier);
     }
@@ -73,5 +75,10 @@ public class PlayerMovement : MonoBehaviour
         float normal = Mathf.InverseLerp(minA, maxA, value);
         return Mathf.Lerp(minB, maxB, normal);
 
+    }
+
+    private bool HandNotTracking(XRNode hand)
+    {
+        return InputTracking.GetLocalPosition(hand) == Vector3.zero;
     }
 }
