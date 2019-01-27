@@ -74,7 +74,6 @@ public class PlayerMovement : MonoBehaviour
     {
         float normal = Mathf.InverseLerp(minA, maxA, value);
         return Mathf.Lerp(minB, maxB, normal);
-
     }
 
     private bool HandNotTracking(XRNode hand)
