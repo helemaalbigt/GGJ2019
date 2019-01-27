@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class AdjustableGravity : MonoBehaviour
@@ -8,6 +6,8 @@ public class AdjustableGravity : MonoBehaviour
     public float _gravMin;
     public float _gravMax;
     public float _optimalSpeed;
+
+    [Header("Debug")] public float _grav;
 
     private Rigidbody _rigidBody;
 
@@ -18,12 +18,12 @@ public class AdjustableGravity : MonoBehaviour
 
     void FixedUpdate()
     {
-        _rigidBody.AddForce(Physics.gravity * _gravMin);
+        _grav = GetGravityFactor();
+        _rigidBody.AddForce(Physics.gravity * _grav);
     }
 
     private float GetGravityFactor()
     {
-       // return Utils.MapValue(_rigidBody.velocity.magnitude, 0, _optimalSpeed, _gravMin, _gravMax);
-        return _gravMin;
+        return Utils.MapValue(_rigidBody.velocity.magnitude, 0, _optimalSpeed, _gravMax, _gravMin);
     }
 }
