@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44979453, g: 0.49986172, b: 0.57560617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44979435, g: 0.49986118, b: 0.5756057, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -265,7 +265,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1414081778}
-  - {fileID: 593990541}
+  - {fileID: 1201942491}
   - {fileID: 1170133231}
   m_Father: {fileID: 1826694991}
   m_RootOrder: 0
@@ -849,12 +849,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1dbd87bf24bf049b7d5e0c3f4fef1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &593990541 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400010, guid: 92025297bad3db54b84c111c9561c9e1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1201942490}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &595716010 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7331092591251640412, guid: 7b60f8cd05cca7a4d85a6897654c24ef,
@@ -1827,30 +1821,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 74483460}
     m_Modifications:
-    - target: {fileID: 100010, guid: 92025297bad3db54b84c111c9561c9e1, type: 3}
-      propertyPath: m_Name
-      value: Aree A
-      objectReference: {fileID: 0}
-    - target: {fileID: 100010, guid: 92025297bad3db54b84c111c9561c9e1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100008, guid: 92025297bad3db54b84c111c9561c9e1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 92025297bad3db54b84c111c9561c9e1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 92025297bad3db54b84c111c9561c9e1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: 92025297bad3db54b84c111c9561c9e1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 92025297bad3db54b84c111c9561c9e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.03
@@ -1907,6 +1877,30 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 19.156921
       objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 92025297bad3db54b84c111c9561c9e1, type: 3}
+      propertyPath: m_Name
+      value: Aree A
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 92025297bad3db54b84c111c9561c9e1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 92025297bad3db54b84c111c9561c9e1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 92025297bad3db54b84c111c9561c9e1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 92025297bad3db54b84c111c9561c9e1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 92025297bad3db54b84c111c9561c9e1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 92025297bad3db54b84c111c9561c9e1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1917,6 +1911,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: c68afc5600bd2a842a4002154cda00b0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92025297bad3db54b84c111c9561c9e1, type: 3}
+--- !u!4 &1201942491 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1201942490}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1277232089
 GameObject:
   m_ObjectHideFlags: 0
